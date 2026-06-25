@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Test</title>
+    <style>
+        body{background:#000;font-family:Arial;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;}
+        .box{background:#111;border:2px solid #1DB954;border-radius:10px;padding:30px;width:300px;text-align:center;}
+        h2{color:#1DB954;}
+        input{width:100%;padding:10px;margin:10px 0;background:#222;border:none;color:#fff;box-sizing:border-box;}
+        button{width:100%;padding:10px;background:#1DB954;color:#000;font-weight:bold;border:none;cursor:pointer;}
+        .error{color:red;}
+        .success{color:green;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>Sewa Sound</h2>
+    <div id="message"></div>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">LOGIN</button>
+    <p style="margin-top:15px; color:#666;">Gunakan: admin / admin</p>
+</div>
+
+<script>
+function login() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var msg = document.getElementById('message');
+    
+    if(username === 'admin' && password === 'admin') {
+        msg.innerHTML = '<div class="success">✅ LOGIN BERHASIL! Selamat datang, Admin.</div>';
+        msg.style.color = 'green';
+    } else {
+        msg.innerHTML = '<div class="error">❌ Username atau password salah! Gunakan admin / admin</div>';
+    }
+}
+</script>
+</body>
+</html>
