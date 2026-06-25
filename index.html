@@ -3,95 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SewaSound - Penyewaan Sound System</title>
+    <title>Aura Audio - Sewa Sound System</title>
     <style>
-        /* CSS untuk membuat tampilan lebih menarik */
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            padding: 20px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.6;
+            min-height: 100vh;
         }
-        nav {
-            background-color: #34495e;
-            padding: 10px;
-            text-align: center;
+
+        /* ===== WARNA HIJAU ===== */
+        :root {
+            --green: #4caf50;
+            --green-dark: #2e7d32;
+            --green-light: #81c784;
         }
-        nav a {
-            color: white;
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 15px;
+            border-bottom: 2px solid #ffffff;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .navbar .logo span {
+            color: var(--green);
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar .nav-links a {
+            color: #ffffff;
             text-decoration: none;
-            margin: 0 15px;
-            padding: 5px 10px;
+            font-size: 16px;
+            font-weight: 500;
         }
-        nav a:hover {
-            background-color: #1abc9c;
-            border-radius: 5px;
+
+        .navbar .nav-links a:hover {
+            color: var(--green);
+            text-decoration: underline;
         }
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        .navbar .nav-links .btn-login {
+            background: var(--green);
+            color: #000000;
+            padding: 6px 20px;
+            border-radius: 3px;
+            font-weight: 600;
         }
-        h1 {
-            color: #2c3e50;
+
+        .navbar .nav-links .btn-login:hover {
+            background: var(--green-light);
+            color: #000000;
+            text-decoration: none;
         }
-        .highlight {
-            background-color: #1abc9c;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+
+        .navbar .nav-links .btn-daftar {
+            border: 2px solid var(--green);
+            padding: 4px 20px;
+            border-radius: 3px;
+            color: #ffffff;
+            background: transparent;
+            font-weight: 600;
+        }
+
+        .navbar .nav-links .btn-daftar:hover {
+            background: var(--green);
+            color: #000000;
+            text-decoration: none;
+        }
+
+        /* ===== SEARCH ===== */
+        .search-bar {
+            padding: 15px 0 10px;
+            border-bottom: 2px solid #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            max-width: 500px;
+            padding: 8px 15px;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+            display: block;
+            margin: 0 auto;
+            background: transparent;
+            color: #ffffff;
+        }
+
+        .search-bar input::placeholder {
+            color: #888;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--green);
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 20px 0 15px;
+            border-bottom: 2px solid #ffffff;
+            margin-bottom: 5px;
             text-align: center;
         }
-        footer {
-            background-color: #2c3e50;
-            color: white;
+
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .hero h2 {
+            font-size: 18px;
+            font-weight: 400;
+            color: #ffffff;
+            margin: 2px 0 5px;
+        }
+
+        .hero .categories {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 5px 0 10px;
+        }
+
+        .hero .categories span {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .hero .btn-primary {
+            display: inline-block;
+            background: var(--green);
+            color: #000000;
+            padding: 8px 35px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            margin-top: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero .btn-primary:hover {
+            background: var(--green-light);
+            color: #000000;
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
             text-align: center;
-            padding: 10px;
-            margin-top: 20px;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 25px 0 15px;
+            color: #ffffff;
+        }
+
+        /* ===== PRODUCT GRID ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 10px 0 15px;
+            border-bottom: 2px solid #ffffff;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .product-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .product-item .price {
+            font-weight: 700;
+            font-size: 16px;
+            color: #ffffff;
+            margin: 3px 0;
+        }
+
+        .product-item .btn-detail {
+            display: inline-block;
+            background: var(--green);
+            color: #000000;
+            padding: 3px 25px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .product-item .btn-detail:hover {
+            background: var(--green-light);
+            color: #000000;
+        }
+
+        /* ===== INFO SECTION ===== */
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 15px 0 15px;
+            border-bottom: 2px solid #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .info-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .info-box p,
+        .info-box li {
+            color: #ffffff;
+            line-height: 1.8;
+            list-style: none;
+        }
+
+        .info-box li {
+            margin-bottom: 2px;
+        }
+
+        .info-box a {
+            color: var(--green);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .info-box a:hover {
+            color: var(--green-light);
+        }
+
+        .info-box .wa {
+            display: inline-block;
+            margin-top: 5px;
+            background: var(--green);
+            color: #000000;
+            padding: 4px 20px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-box .wa:hover {
+            background: var(--green-light);
+            color: #000000;
+            text-decoration: none;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 15px 0 10px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .footer span {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .navbar .nav-links {
+                gap: 15px;
+            }
+
+            .navbar .nav-links a {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .hero h2 {
+                font-size: 16px;
+            }
+
+            .hero .categories {
+                gap: 15px;
+            }
+
+            .hero .categories span {
+                font-size: 14px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .info-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .navbar .logo {
+                font-size: 22px;
+            }
+
+            .hero h1 {
+                font-size: 19px;
+            }
+
+            .hero .btn-primary {
+                padding: 6px 25px;
+                font-size: 13px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .product-item h3 {
+                font-size: 14px;
+            }
+
+            .product-item .price {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🎵 SewaSound</h1>
-        <p>Penyewaan Sound System Profesional</p>
-    </header>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#layanan">Layanan</a>
-        <a href="#paket">Paket</a>
-        <a href="#kontak">Kontak</a>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="logo">Aura <span>Audio</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="barang.php">Barang</a></li>
+            <li><a href="login.php" class="btn-login">Login</a></li>
+            <li><a href="register.php" class="btn-daftar">Daftar</a></li>
+        </ul>
     </nav>
 
-    <main>
-        <h2>Selamat Datang di SewaSound!</h2>
-        <p>Kami menyediakan penyewaan sound system untuk berbagai acara:</p>
-        <ul>
-            <li>🎤 Acara Pernikahan</li>
-            <li>🎸 Konser & Festival</li>
-            <li>🏢 Acara Perusahaan</li>
-            <li>🎉 Pesta & Party</li>
-        </ul>
-        
-        <div class="highlight">
-            <p><strong>Hubungi kami sekarang!</strong> 📞 0812-3456-7890</p>
-        </div>
-    </main>
+    <!-- ===== SEARCH ===== -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search">
+    </div>
 
-    <footer>
-        <p>&copy; 2026 SewaSound. All rights reserved.</p>
-        <p style="font-size: 12px;">This site is open source. Improve this page.</p>
-    </footer>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <h1>Sewa Sound Aura Audio</h1>
+        <h2>Sewa Sound System Profesional</h2>
+        <div class="categories">
+            <span>Speaker</span>
+            <span>Amplifier</span>
+            <span>Mixer</span>
+            <span>Microphone</span>
+        </div>
+        <a href="barang.php" class="btn-primary">Lihat Semua Barang →</a>
+    </section>
+
+    <!-- ===== BARANG POPULER ===== -->
+    <h2 class="section-title">Barang Populer</h2>
+    <div class="product-grid">
+        <div class="product-item">
+            <h3>Speaker Active 15 inch</h3>
+            <div class="price">Rp 350.000 /hari</div>
+            <a href="detail.php?id=1" class="btn-detail">Detail</a>
+        </div>
+        <div class="product-item">
+            <h3>Speaker Active 18 inch</h3>
+            <div class="price">Rp 450.000 /hari</div>
+            <a href="detail.php?id=2" class="btn-detail">Detail</a>
+        </div>
+        <div class="product-item">
+            <h3>Power Amplifier 2000W</h3>
+            <div class="price">Rp 400.000 /hari</div>
+            <a href="detail.php?id=3" class="btn-detail">Detail</a>
+        </div>
+        <div class="product-item">
+            <h3>Mixer Digital 16 Channel</h3>
+            <div class="price">Rp 500.000 /hari</div>
+            <a href="detail.php?id=4" class="btn-detail">Detail</a>
+        </div>
+    </div>
+
+    <!-- ===== INFO SECTION ===== -->
+    <div class="info-section">
+        <div class="info-box">
+            <h3>Alamat Kami</h3>
+            <p>
+                Jl. Raya Sengare, Sumillir, Sengare<br>
+                Kec. Talun, Kab. Pekalongan<br>
+                Jawa Tengah 51192
+            </p>
+            <a href="https://www.google.com/maps" target="_blank">Google Maps</a>
+            <br><br>
+            <p><strong>WhatsApp</strong><br>0878 1289 0246</p>
+            <a href="https://wa.me/628789290246" target="_blank" class="wa">Chat WA</a>
+        </div>
+
+        <div class="info-box">
+            <h3>Pembayaran</h3>
+            <ul>
+                <li>DANA: 0813 2785 8710</li>
+                <li>Cash di Toko</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        &copy; 2026 <span>Aura Audio</span> - Sewa Sound System Profesional
+    </div>
+
 </body>
 </html>
